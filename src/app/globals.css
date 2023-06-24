@@ -26,6 +26,7 @@ main {
 .brand {
   font-family: "Lobster", cursive;
   font-weight: 300;
+  font-size: xx-large;
 }
 
 .HomePage {
@@ -61,6 +62,21 @@ main {
   margin: 50px;
 }
 
-.about span {
+.about p {
+  width: 40vw;
+  margin-right: 50px;
+}
+
+.statsring {
+  width: 40vw;
+}
+
+.crimson {
   color: crimson;
+}
+
+@media screen and (max-width: 480px) {
+  .social {
+    background-color: brown !important;
+  }
 }
