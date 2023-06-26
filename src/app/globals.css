@@ -75,8 +75,6 @@ main {
   color: crimson;
 }
 
-@media screen and (max-width: 480px) {
-  .social {
-    background-color: brown !important;
-  }
+.mantine-Container-root {
+  display: flex;
 }

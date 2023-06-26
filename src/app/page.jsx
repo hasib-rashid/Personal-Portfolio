@@ -6,6 +6,8 @@ import Image from 'next/image'
 import HomePage from '@/components/HomePage/HomePage'
 import About from '@/components/About/About'
 import { useLocalStorage } from '@mantine/hooks'
+import Projects from '@/components/Projects/Projects'
+import ContactUs from "@/components/ContactUs/ContactMe"
 
 export default function Home() {
   const [colorScheme, toggleColorScheme] = useLocalStorage({
@@ -16,7 +18,7 @@ export default function Home() {
   return (
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
       <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
-        <div style={{ overflowX: "hidden" }}>
+        <div style={{ overflow: "hidden" }}>
           <main style={{
             overflowX: "hidden"
           }}>
@@ -36,6 +38,9 @@ export default function Home() {
             <HomePage />
           </main>
           <About />
+          <Projects />
+          <br />
+          <ContactUs />
         </div>
       </MantineProvider>
     </ColorSchemeProvider>
