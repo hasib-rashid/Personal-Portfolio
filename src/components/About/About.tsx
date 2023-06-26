@@ -4,7 +4,7 @@ import StatsRing from './StatsRing'
 
 const About = () => {
     return (
-        <div className="about">
+        <div className="about" id="about">
             <h1><span className='crimson'>A</span>bout <span className="crimson">M</span>e</h1>
             <br />
             <div style={{ display: "flex" }}>

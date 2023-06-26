@@ -18,16 +18,15 @@ const Projects = () => {
         async function def() {
             const data = await supabase.from("projects").select("*")
 
-            const jinish: any = await data.data
+            const finalData: any = await data.data
 
-            setProjectArray(jinish)
+            setProjectArray(finalData)
         }
         def()
     }, [])
 
 
     if (projectArray) {
-        console.log(projectArray[0].allImages.images)
         return (
             <div>
                 <h1 style={{ margin: "50px 0", textAlign: "center" }}><span className='crimson'>P</span>rojects</h1>
@@ -35,11 +34,13 @@ const Projects = () => {
                 <Container style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                     {
                         projectArray.length > 0 && (
-                            <SimpleGrid cols={2}>
+                            <Grid grow>
                                 {projectArray.map((s: any) => (
-                                    <ProjectsCard allImages={s.allImages.images} projectDemo={"https://google.com/"} dateCreated={s.dateCreated} projectDescription={s.projectDescription} projectSource={"https://github.com"} projectTitle={s.projectTitle} />
+                                    <Grid.Col span={4}>
+                                        <ProjectsCard allImages={s.allImages.images} projectDemo={"https://google.com/"} dateCreated={s.dateCreated} projectDescription={s.projectDescription} projectSource={"https://github.com"} projectTitle={s.projectTitle} />
+                                    </Grid.Col>
                                 ))}
-                            </SimpleGrid>
+                            </Grid>
                         )
                     }
                 </Container>
@@ -47,7 +48,7 @@ const Projects = () => {
         )
     } else {
         return (
-            <h1>Loading</h1>
+            <h1 style={{ textAlign: "center", fontFamily: "Lobster, cursive", fontSize: "40px", fontWeight: 300 }}>Loading</h1>
         )
     }
 }

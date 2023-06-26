@@ -7,16 +7,20 @@ import { IconBrandTwitter, IconBrandDiscord, IconBrandFacebook, IconSun, IconMoo
 export function HeaderMiddle() {
     const links: any = [
         {
-            "link": "/about",
+            "link": "/",
             "label": "Home"
         },
         {
-            "link": "/learn",
+            "link": "550",
             "label": "About"
         },
         {
-            "link": "/pricing",
+            "link": "1000",
             "label": "Projects"
+        },
+        {
+            "link": "10000000000000000",
+            "label": "Contact"
         }
     ]
     const [opened, { toggle }] = useDisclosure(false);
@@ -45,7 +49,7 @@ export function HeaderMiddle() {
         },
 
         links: {
-            width: rem(260),
+            width: rem(310),
 
             [theme.fn.smallerThan('sm')]: {
                 display: 'none',
@@ -108,11 +112,12 @@ export function HeaderMiddle() {
     const items = links.map((link: any) => (
         <a
             key={link.label}
-            href={link.link}
+            href="#about"
             className={cx(classes.link, { [classes.linkActive]: active === link.link })}
             onClick={(event) => {
                 event.preventDefault();
                 setActive(link.link);
+                window.scrollTo(0, link.link)
             }}
         >
             {link.label}
