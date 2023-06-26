@@ -8,6 +8,7 @@ import About from '@/components/About/About'
 import { useLocalStorage } from '@mantine/hooks'
 import Projects from '@/components/Projects/Projects'
 import ContactUs from "@/components/ContactUs/ContactMe"
+import Footer from '@/components/Footer/Footer'
 
 export default function Home() {
   const [colorScheme, toggleColorScheme] = useLocalStorage({
@@ -41,6 +42,7 @@ export default function Home() {
           <Projects />
           <br />
           <ContactUs />
+          <Footer />
         </div>
       </MantineProvider>
     </ColorSchemeProvider>
