@@ -2,29 +2,32 @@ import { useState } from 'react';
 import { createStyles, Header, Group, ActionIcon, Container, Burger, rem, ColorSchemeProvider, MantineProvider, Drawer } from '@mantine/core';
 import { useDisclosure, useLocalStorage } from '@mantine/hooks';
 import { IconBrandTwitter, IconBrandDiscord, IconBrandFacebook, IconSun, IconMoonStars, IconBrandGithubFilled } from '@tabler/icons-react';
+import useTarget from "use-target"
 
 
 export function HeaderMiddle() {
     const links: any = [
         {
-            "link": "/",
+            "link": "home",
             "label": "Home"
         },
         {
-            "link": "550",
+            "link": "about",
             "label": "About"
         },
         {
-            "link": "1000",
+            "link": "projects",
             "label": "Projects"
         },
         {
-            "link": "10000000000000000",
+            "link": "contact",
             "label": "Contact"
         }
     ]
     const [opened, { open, close }] = useDisclosure(false);
     const [active, setActive] = useState(links[0].link);
+    const handleClick = useTarget(active);
+    console.log(active)
 
     const [colorScheme, setColorScheme] = useLocalStorage<any>({
         key: 'mantine-color-scheme',
@@ -112,13 +115,13 @@ export function HeaderMiddle() {
     const items = links.map((link: any) => (
         <a
             key={link.label}
-            href="#about"
+            href="/"
             className={cx(classes.link, { [classes.linkActive]: active === link.link })}
             onClickCapture={close}
             onClick={(event) => {
                 event.preventDefault();
                 setActive(link.link);
-                window.scrollTo(0, link.link)
+                return handleClick
             }}
         >
             {link.label}

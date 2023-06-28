@@ -19,17 +19,23 @@ export default function Home() {
   return (
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
       <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
-        <div style={{ overflow: "hidden" }}>
+        <div id="home" style={{ overflow: "hidden" }}>
           <main style={{
             overflowX: "hidden"
           }}>
             <HeaderMiddle />
             <HomePage />
           </main>
-          <About />
-          <Projects />
+          <div id="about">
+            <About />
+          </div>
+          <div id="projects">
+            <Projects />
+          </div>
           <br />
-          <ContactUs />
+          <div id="contact">
+            <ContactUs />
+          </div>
           <Footer />
         </div>
       </MantineProvider>

@@ -62,7 +62,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 50px;
+  padding: 70px 0;
 }
 
 .about p {

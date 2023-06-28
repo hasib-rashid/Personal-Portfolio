@@ -3080,6 +3080,11 @@ use-sidecar@^1.1.2:
     detect-node-es "^1.1.0"
     tslib "^2.0.0"
 
+use-target@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/use-target/-/use-target-1.0.2.tgz#5713c7b42d528c7e5348df1db7a4ed6500135164"
+  integrity sha512-lRRH+62RH8KhfSHg4WlhxwvEDJexcw4kzzvrzi0ljKVSPvNWgYzuWPfW8JeO6twDNcW/RJgZQDjCSd1w7Zumrg==
+
 utf-8-validate@^5.0.2:
   version "5.0.10"
   resolved "https://registry.yarnpkg.com/utf-8-validate/-/utf-8-validate-5.0.10.tgz#d7d10ea39318171ca982718b6b96a8d2442571a2"

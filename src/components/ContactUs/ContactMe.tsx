@@ -17,7 +17,7 @@ export default function ContactMe() {
     });
 
     return (
-        <form style={{ margin: "auto", marginTop: "50px", width: "70vw" }} onSubmit={form.onSubmit(() => { })}>
+        <form style={{ margin: "auto", padding: "70px 0", width: "70vw" }} onSubmit={form.onSubmit(() => { })}>
             <Title
                 order={2}
                 size="h1"
