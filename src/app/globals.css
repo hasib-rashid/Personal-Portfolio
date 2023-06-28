@@ -11,16 +11,19 @@
 }
 
 main {
-  background-image: url("../../public/your-image.jpg") !important;
+  background: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)), url("https://i.ibb.co/PmQjD9z/your-image.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   width: 100vw;
   height: 100vh;
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover;
 }
 
-.hero-image img {
-  filter: brightness(45%);
+.hero-image {  
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .brand {

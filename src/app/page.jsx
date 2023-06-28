@@ -23,19 +23,7 @@ export default function Home() {
           <main style={{
             overflowX: "hidden"
           }}>
-            <div className="hero-image" style={{
-              position: "absolute",
-              inset: 0,
-              pointerEvents: "none"
-            }}>
-              <Image src={bg} alt="Hero" fill />
-            </div>
-            <div style={{
-              position: "relative",
-              zIndex: 10
-            }}>
-              <HeaderMiddle />
-            </div>
+            <HeaderMiddle />
             <HomePage />
           </main>
           <About />

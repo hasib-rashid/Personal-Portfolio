@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { createStyles, Header, Group, ActionIcon, Container, Burger, rem, ColorSchemeProvider, MantineProvider } from '@mantine/core';
+import { createStyles, Header, Group, ActionIcon, Container, Burger, rem, ColorSchemeProvider, MantineProvider, Drawer } from '@mantine/core';
 import { useDisclosure, useLocalStorage } from '@mantine/hooks';
 import { IconBrandTwitter, IconBrandDiscord, IconBrandFacebook, IconSun, IconMoonStars, IconBrandGithubFilled } from '@tabler/icons-react';
 
@@ -23,7 +23,7 @@ export function HeaderMiddle() {
             "label": "Contact"
         }
     ]
-    const [opened, { toggle }] = useDisclosure(false);
+    const [opened, { open, close }] = useDisclosure(false);
     const [active, setActive] = useState(links[0].link);
 
     const [colorScheme, setColorScheme] = useLocalStorage<any>({
@@ -114,6 +114,7 @@ export function HeaderMiddle() {
             key={link.label}
             href="#about"
             className={cx(classes.link, { [classes.linkActive]: active === link.link })}
+            onClickCapture={close}
             onClick={(event) => {
                 event.preventDefault();
                 setActive(link.link);
@@ -127,7 +128,16 @@ export function HeaderMiddle() {
     return (
         <Header height={56} mb={120} className={classes.header}>
             <Container className={classes.inner}>
-                <Burger opened={opened} onClick={toggle} size="sm" className={classes.burger} />
+                <Drawer
+                    opened={opened}
+                    onClose={close}
+                    title="Hasib Al Rashid"
+                    overlayProps={{ opacity: 0.5, blur: 4 }}
+                >
+                    {items}
+                </Drawer>
+
+                <Burger opened={opened} onClick={open} size="sm" className={classes.burger} />
                 <Group className={classes.links} spacing={5}>
                     {items}
                 </Group>

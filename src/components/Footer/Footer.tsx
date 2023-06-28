@@ -1,5 +1,6 @@
 import { createStyles, Container, Group, ActionIcon, rem } from '@mantine/core';
-import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons-react';
+import { IconBrandDiscord, IconBrandGithubFilled } from '@tabler/icons-react';
+import { IconBrandTwitter, IconBrandFacebook } from '@tabler/icons-react';
 
 const useStyles = createStyles((theme) => ({
     footer: {
@@ -33,16 +34,19 @@ export default function Footer() {
     return (
         <div className={classes.footer}>
             <Container className={classes.inner}>
-                <h1>Hasib Al Rashid</h1>
+                <h1 style={{ fontFamily: "Lobster, cursive", fontWeight: 300, fontSize: "40px" }}>Hasib Al Rashid</h1>
                 <Group spacing={0} className={classes.links} position="right" noWrap>
                     <ActionIcon size="lg">
-                        <IconBrandTwitter size="1.05rem" stroke={1.5} />
+                        <IconBrandTwitter color={"#00acee"} size="1.1rem" stroke={1.5} />
                     </ActionIcon>
                     <ActionIcon size="lg">
-                        <IconBrandYoutube size="1.05rem" stroke={1.5} />
+                        <IconBrandFacebook color={"#3b5998"} size="1.1rem" stroke={1.5} />
                     </ActionIcon>
                     <ActionIcon size="lg">
-                        <IconBrandInstagram size="1.05rem" stroke={1.5} />
+                        <IconBrandDiscord color={"#7289da"} size="1.1rem" stroke={1.5} />
+                    </ActionIcon>
+                    <ActionIcon size="lg">
+                        <IconBrandGithubFilled color={"#171515"} size="1.1rem" stroke={1.5} />
                     </ActionIcon>
                 </Group>
             </Container>
