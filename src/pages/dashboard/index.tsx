@@ -1,5 +1,6 @@
 import { supabase } from '@/utils';
-import React, { useEffect } from 'react'
+import React from 'react'
+import AdminHeader from '@/components/Admin/Header';
 
 const dashboard = () => {
     supabase.auth.getSession().then((res) => {
@@ -8,7 +9,7 @@ const dashboard = () => {
 
     return (
         <div>
-            <h1>Dashboard</h1>
+            <AdminHeader />
             <button onClick={() => {
                 supabase.auth.signOut()
                 window.location.href = '/'
