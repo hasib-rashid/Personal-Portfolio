@@ -4,7 +4,6 @@ import { useDisclosure, useLocalStorage } from '@mantine/hooks';
 import { IconBrandTwitter, IconBrandDiscord, IconBrandFacebook, IconSun, IconMoonStars, IconBrandGithubFilled } from '@tabler/icons-react';
 import useTarget from "use-target"
 
-
 export function HeaderMiddle() {
     const links: any = [
         {
@@ -27,7 +26,6 @@ export function HeaderMiddle() {
     const [opened, { open, close }] = useDisclosure(false);
     const [active, setActive] = useState(links[0].link);
     const handleClick = useTarget(active);
-    console.log(active)
 
     const [colorScheme, setColorScheme] = useLocalStorage<any>({
         key: 'mantine-color-scheme',
@@ -106,7 +104,6 @@ export function HeaderMiddle() {
             },
         },
     }));
-
 
     const { classes, cx } = useStyles();
     const toggleColorScheme = (value?: any) =>

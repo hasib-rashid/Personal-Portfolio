@@ -1,8 +1,6 @@
 "use client"
 import { ColorSchemeProvider, MantineProvider } from '@mantine/core'
 import { HeaderMiddle } from '../components/Header/Header'
-import bg from '../../public/your-image.jpg'
-import Image from 'next/image'
 import HomePage from '@/components/HomePage/HomePage'
 import About from '@/components/About/About'
 import { useLocalStorage } from '@mantine/hooks'

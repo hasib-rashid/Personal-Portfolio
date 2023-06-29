@@ -81,3 +81,7 @@ main {
 .mantine-Container-root {
   display: flex;
 }
+
+.active {
+  background-color: crimson;
+}
