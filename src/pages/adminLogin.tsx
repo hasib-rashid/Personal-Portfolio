@@ -17,9 +17,13 @@ import {
     createStyles,
     rem,
     Title,
+    Notification,
+    Alert,
 } from '@mantine/core';
 import { supabase } from "@/utils"
 import { useState } from 'react';
+import { IconX } from '@tabler/icons-react';
+import { IconAlertCircle } from '@tabler/icons-react';
 
 export default function adminLogin(props: PaperProps) {
     const [email, setEmail] = useState()
@@ -93,8 +97,11 @@ export default function adminLogin(props: PaperProps) {
         })
         if (error) {
             console.error('Error signing in:', error.message);
+            alert("Password is incorrect")
         } else {
             console.log('User:', data);
+            localStorage.setItem("supabaseSession", data.session.access_token)
+            window.location.href = "/dashboard"
         }
     };
 
