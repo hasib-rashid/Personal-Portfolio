@@ -1,11 +1,16 @@
 import { useState } from 'react';
-import { createStyles, Header, Group, ActionIcon, Container, Burger, rem, ColorSchemeProvider, MantineProvider, Drawer } from '@mantine/core';
+import { createStyles, Header, Group, ActionIcon, Container, Burger, rem, ColorSchemeProvider, MantineProvider, Drawer, Button } from '@mantine/core';
 import { useDisclosure, useLocalStorage } from '@mantine/hooks';
 import { IconBrandTwitter, IconBrandDiscord, IconBrandFacebook, IconSun, IconMoonStars, IconBrandGithubFilled } from '@tabler/icons-react';
 import useTarget from "use-target"
+import { supabase } from '@/utils';
 
 export default function AdminHeader() {
     const links: any = [
+        {
+            "link": "/",
+            "label": "Dashboard"
+        },
         {
             "link": "create",
             "label": "Create Project"
@@ -42,7 +47,7 @@ export default function AdminHeader() {
         },
 
         links: {
-            width: rem(310),
+            width: rem(350),
 
             [theme.fn.smallerThan('sm')]: {
                 display: 'none',
@@ -50,20 +55,12 @@ export default function AdminHeader() {
         },
 
         social: {
-            width: rem(260),
-
-            [theme.fn.smallerThan('sm')]: {
-                width: 'auto',
-                marginLeft: 'auto',
-            },
+            width: rem(260)
         },
 
         response: {
             display: "flex",
 
-            [theme.fn.smallerThan('sm')]: {
-                display: "none"
-            }
         },
 
         burger: {
@@ -109,6 +106,7 @@ export default function AdminHeader() {
             onClickCapture={close}
             onClick={(event) => {
                 event.preventDefault();
+                window.location.href = `/dashboard/${link.link}`
                 setActive(link.link);
                 return handleClick
             }}
@@ -134,23 +132,19 @@ export default function AdminHeader() {
                     {items}
                 </Group>
 
-                <h1 style={{ color: `${colorScheme === "dark" ? "white" : "black"}` }} className="brand">Hasib Al Rashid</h1>
+                <h1 style={{ color: `${colorScheme === "dark" ? "white" : "black"}` }} className="brand">Dashboard</h1>
 
                 <Group spacing={0} className={classes.social || "social"} position="right" noWrap>
                     <div className={classes.response}>
-                        <ActionIcon size="lg">
-                            <IconBrandTwitter color={"#00acee"} size="1.1rem" stroke={1.5} />
-                        </ActionIcon>
-                        <ActionIcon size="lg">
-                            <IconBrandFacebook color={"#3b5998"} size="1.1rem" stroke={1.5} />
-                        </ActionIcon>
-                        <ActionIcon size="lg">
-                            <IconBrandDiscord color={"#7289da"} size="1.1rem" stroke={1.5} />
-                        </ActionIcon>
-                        <ActionIcon size="lg">
-                            <IconBrandGithubFilled color={"#171515"} size="1.1rem" stroke={1.5} />
-                        </ActionIcon>
+                        <Button onClick={() => {
+                            supabase.auth.signOut()
+                            localStorage.removeItem("supabaseSession")
+                            window.location.href = '/'
+                        }}>Sign Out</Button>
                     </div>
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
                     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
                         <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
                             <ActionIcon

@@ -113,7 +113,7 @@ export default function adminLogin(props: PaperProps) {
                 <div className={classes.wrapper}>
                     <Paper className={classes.form} radius={0} p={30}>
                         <Title order={2} className={classes.title} ta="center" mt="md" mb={50}>
-                            Welcome back to Mantine!
+                            Dashboard
                         </Title>
 
                         <form onSubmit={form.onSubmit(handleLogin)}>
