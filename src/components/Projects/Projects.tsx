@@ -20,7 +20,7 @@ const Projects = () => {
 
 
     if (projectArray) {
-        const result = projectArray.slice(0, 4)
+        const result = projectArray.reverse().slice(0, 4)
         return (
             <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
                 <h1 style={{ margin: "0", padding: "70px 0", textAlign: "center" }}><span className='crimson'>P</span>rojects</h1>
