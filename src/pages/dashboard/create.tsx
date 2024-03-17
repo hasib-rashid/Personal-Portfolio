@@ -93,7 +93,21 @@ const create = () => {
                     if (!title || !description || !dateCreated || !demo || !source || !images) {
                         alert("! Something is Missing")
                     } else {
+                        const img = JSON.parse(images)
+                        const handleSubmit = async () => {
+                            const { data, error } = await supabase
+                                .from('projects')
+                                .insert([
+                                    { dateCreated: dateCreated, projectTitle: title, projectDescription: description, projectSource: source, projectDemo: demo, allImages: img }
+                                ])
+                                .select()
+                            console.log(data)
+                        }
+
+                        handleSubmit()
+                        console.log(JSON.parse(images))
                         alert("Success")
+                        window.location.href = "/projects"
                     }
                 }}>Post Project</Button>
             </div>
