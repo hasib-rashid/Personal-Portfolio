@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import ProjectsCard from './ProjectsCard'
-import { Container, Grid, SimpleGrid } from "@mantine/core"
+import { Container, Grid } from "@mantine/core"
 import { supabase } from '@/utils';
+import { Button } from '@mantine/core';
 
 const Projects = () => {
     const [projectArray, setProjectArray] = useState<any>()
@@ -19,15 +20,16 @@ const Projects = () => {
 
 
     if (projectArray) {
+        const result = projectArray.slice(0, 4)
         return (
-            <div>
+            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
                 <h1 style={{ margin: "0", padding: "70px 0", textAlign: "center" }}><span className='crimson'>P</span>rojects</h1>
 
                 <Container style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                     {
                         projectArray.length > 0 && (
                             <Grid grow>
-                                {projectArray.map((s: any) => (
+                                {result.map((s: any) => (
                                     <Grid.Col span={4}>
                                         <ProjectsCard allImages={s.allImages.images} projectDemo={"https://google.com/"} dateCreated={s.dateCreated} projectDescription={s.projectDescription} projectSource={"https://github.com"} projectTitle={s.projectTitle} />
                                     </Grid.Col>
@@ -35,7 +37,17 @@ const Projects = () => {
                             </Grid>
                         )
                     }
+
                 </Container>
+                <Button
+                    variant="filled"
+                    onClick={() => {
+                        window.location.href = "/allProjects"
+                    }}
+                    style={{ marginTop: "25px", width: "70vw" }}
+                >
+                    See More
+                </Button>
             </div>
         )
     } else {
