@@ -1,0 +1,29 @@
+.dashboardInput {
+    width: 600px;
+    color: light-dark(var(--mantine-color-gray-5), var(--mantine-color-dark-3));
+    color: crimson;
+}
+
+/* Input */
+.mantine-gszoqu { 
+    background-color: #2e2e2e;
+    border: 1px solid #242424;
+    color: #c9c9c9;
+    text-decoration: none;
+}
+
+/* floating label */
+.mantine-1fzet7j {
+    color: #c9c9c9;
+}
+
+.inputContainers {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputContainers button {
+    width: 600px;
+}

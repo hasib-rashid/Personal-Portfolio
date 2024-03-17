@@ -14,6 +14,8 @@ const dashboard = () => {
                 supabase.auth.signOut()
                 window.location.href = '/'
             }}>Sign Out</button>
+
+            <h1>Dashboard</h1>
         </div>
     )
 }
