@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { createStyles, Header, Group, ActionIcon, Container, Burger, rem, ColorSchemeProvider, MantineProvider, Drawer, Button } from '@mantine/core';
 import { useDisclosure, useLocalStorage } from '@mantine/hooks';
-import { IconBrandTwitter, IconBrandDiscord, IconBrandFacebook, IconSun, IconMoonStars, IconBrandGithubFilled } from '@tabler/icons-react';
+import { IconSun, IconMoonStars } from '@tabler/icons-react';
 import useTarget from "use-target"
 import { supabase } from '@/utils';
 
@@ -18,6 +18,10 @@ export default function AdminHeader() {
         {
             "link": "edit",
             "label": "Edit Project"
+        },
+        {
+            "link": "contacted",
+            "label": "Contacted"
         }
     ]
     const [opened, { open, close }] = useDisclosure(false);
@@ -33,7 +37,8 @@ export default function AdminHeader() {
         header: {
             backgroundColor: colorScheme === 'dark' ? "#1A1B1E" : "white",
             zIndex: 1,
-            position: "fixed"
+            position: "fixed",
+            justifyContent: "space-between"
         },
         inner: {
             display: 'flex',
@@ -47,7 +52,7 @@ export default function AdminHeader() {
         },
 
         links: {
-            width: rem(350),
+            width: rem(600),
 
             [theme.fn.smallerThan('sm')]: {
                 display: 'none',
@@ -128,7 +133,7 @@ export default function AdminHeader() {
                 </Drawer>
 
                 <Burger opened={opened} onClick={open} size="sm" className={classes.burger} />
-                <Group className={classes.links} spacing={5}>
+                <Group className={classes.links} spacing={3}>
                     {items}
                 </Group>
 

@@ -116,7 +116,14 @@ export function HeaderMiddle() {
             className={cx(classes.link, { [classes.linkActive]: active === link.link })}
             onClickCapture={close}
             onClick={(event) => {
+                if (window.location.pathname != "/") {
+                    window.location.href = "/"
+
+                    event.preventDefault();
+                    return handleClick
+                }
                 event.preventDefault();
+
                 setActive(link.link);
                 return handleClick
             }}
