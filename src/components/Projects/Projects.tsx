@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ProjectsCard from './ProjectsCard'
-import { Container, Grid } from "@mantine/core"
+import { Container, Grid, Skeleton } from "@mantine/core"
 import { supabase } from '@/utils';
 import { Button } from '@mantine/core';
 
@@ -42,7 +42,7 @@ const Projects = () => {
                 <Button
                     variant="filled"
                     onClick={() => {
-                        window.location.href = "/allProjects"
+                        window.location.href = "/projects"
                     }}
                     style={{ marginTop: "25px", width: "70vw" }}
                 >
@@ -52,7 +52,9 @@ const Projects = () => {
         )
     } else {
         return (
-            <h1 style={{ textAlign: "center", fontFamily: "Lobster, cursive", fontSize: "40px", fontWeight: 300 }}>Loading</h1>
+            <div>
+                <h1 style={{ textAlign: "center", fontFamily: "Lobster, cursive", fontSize: "40px", fontWeight: 300 }}>Loading</h1>
+            </div>
         )
     }
 }

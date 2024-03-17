@@ -142,8 +142,9 @@ export function HeaderMiddle() {
                     {items}
                 </Group>
 
-                <h1 style={{ color: `${colorScheme === "dark" ? "white" : "black"}` }} className="brand">Hasib Al Rashid</h1>
-
+                <a style={{ textDecoration: "none" }} href="/">
+                    <h1 style={{ color: `${colorScheme === "dark" ? "white" : "black"}` }} className="brand">Hasib Al Rashid</h1>
+                </a>
                 <Group spacing={0} className={classes.social || "social"} position="right" noWrap>
                     <div className={classes.response}>
                         <ActionIcon size="lg">

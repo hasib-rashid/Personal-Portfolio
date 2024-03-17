@@ -1,5 +1,5 @@
 "use client"
-import { ColorSchemeProvider, MantineProvider } from '@mantine/core'
+import { ColorSchemeProvider, Container, Grid, MantineProvider, Skeleton } from '@mantine/core'
 import { HeaderMiddle } from '../components/Header/Header'
 import HomePage from '@/components/HomePage/HomePage'
 import About from '@/components/About/About'
@@ -8,6 +8,9 @@ import Projects from '@/components/Projects/Projects'
 import ContactUs from "@/components/ContactUs/ContactMe"
 import Footer from '@/components/Footer/Footer'
 import "../app/globals.css"
+import { useEffect, useState } from 'react'
+import { supabase } from '@/utils'
+import ProjectsCard from '@/components/Projects/ProjectsCard'
 
 export default function Home() {
     const [colorScheme, toggleColorScheme] = useLocalStorage<any>({
@@ -15,23 +18,84 @@ export default function Home() {
         defaultValue: 'light',
         getInitialValueInEffect: true,
     });
-    return (
-        <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-            <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
-                <div id="home" style={{ overflow: "hidden" }}>
-                    <div style={{
-                        overflowX: "hidden",
-                        margin: "25px"
-                    }}>
-                        <HeaderMiddle />
-                        <br />
-                        <br />
-                        <h1>All Projects</h1>
-                    </div>
+    const [projectArray, setProjectArray] = useState<any>()
 
-                    <Footer />
-                </div>
-            </MantineProvider>
-        </ColorSchemeProvider>
-    )
+    useEffect(() => {
+        async function def() {
+            const data = await supabase.from("projects").select("*")
+
+            const finalData: any = await data.data
+
+            setProjectArray(finalData)
+        }
+        def()
+    }, [])
+    if (projectArray) {
+
+        return (
+            <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+                <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
+                    <div id="home" style={{ overflow: "hidden" }}>
+                        <div style={{
+                            overflowX: "hidden",
+                            overflowY: "hidden"
+                        }}>
+                            <HeaderMiddle />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <h1 style={{ textAlign: "center" }}>All Projects</h1>
+
+                            <br />
+                            <Container style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                {
+                                    projectArray.reverse().length > 0 && (
+                                        <Grid grow>
+                                            {projectArray.map((s: any) => (
+                                                <Grid.Col span={5}>
+                                                    <ProjectsCard allImages={s.allImages.images} projectDemo={"https://google.com/"} dateCreated={s.dateCreated} projectDescription={s.projectDescription} projectSource={"https://github.com"} projectTitle={s.projectTitle} />
+                                                </Grid.Col>
+                                            ))}
+                                        </Grid>
+                                    )
+                                }
+
+                            </Container>
+                        </div>
+                        <br />
+                        <br />
+                        <Footer />
+                    </div>
+                </MantineProvider>
+            </ColorSchemeProvider>
+        )
+    } else {
+        return (
+            <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+                <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
+                    <div id="home" style={{ overflow: "hidden" }}>
+                        <div style={{
+                            overflowX: "hidden",
+                            overflowY: "hidden"
+                        }}>
+                            <HeaderMiddle />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <h1 style={{ textAlign: "center" }}>All Projects</h1>
+
+                            <br />
+
+                            <h1 style={{ textAlign: 'center', fontSize: "50px" }} className='brand'>Loading</h1>
+                        </div>
+                        <br />
+                        <br />
+                        <Footer />
+                    </div>
+                </MantineProvider>
+            </ColorSchemeProvider>
+        )
+    }
 }

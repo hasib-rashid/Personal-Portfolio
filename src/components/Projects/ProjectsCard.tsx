@@ -41,7 +41,9 @@ export default function ProjectsCard({ allImages, projectTitle, projectDescripti
 
     const slides = allImages.map((image: any) => (
         <Carousel.Slide key={image}>
-            <Image src={image} height={220} />
+            <Image onClick={(e) => {
+                e.stopPropagation();
+            }} src={image} height={220} />
         </Carousel.Slide>
     ));
 
