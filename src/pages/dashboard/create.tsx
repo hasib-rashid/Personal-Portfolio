@@ -1,14 +1,15 @@
 import AdminHeader from '@/components/Admin/Header'
 import { supabase } from '@/utils'
-import { TextInput, Button, Alert } from '@mantine/core'
-import React, { useState } from 'react'
-import { notifications } from '@mantine/notifications';
+import { TextInput, Button } from '@mantine/core'
+import { useState, useEffect } from 'react'
 import './style.css'
 
 const create = () => {
-    supabase.auth.getSession().then((res) => {
-        if (!res.data.session) window.location.href = "/"
-    })
+    useEffect(() => {
+        supabase.auth.getSession().then((res) => {
+            if (!res.data.session) window.location.href = "/"
+        })
+    }, [])
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
