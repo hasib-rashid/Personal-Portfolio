@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ProjectsCard from './ProjectsCard'
-import { Container, Grid, Skeleton } from "@mantine/core"
+import { Container, Grid } from "@mantine/core"
 import { supabase } from '@/utils';
 import { Button } from '@mantine/core';
 
