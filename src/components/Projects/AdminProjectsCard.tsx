@@ -33,10 +33,11 @@ interface ProjectCard {
     projectDescription: any
     projectSource: any,
     projectDemo: any,
-    dateCreated: any
+    dateCreated: any,
+    data: any
 }
 
-export default function AdminProjectsCard({ allImages, projectTitle, projectDescription, projectSource, projectDemo, dateCreated }: ProjectCard) {
+export default function AdminProjectsCard({ data, allImages, projectTitle, projectDescription, projectSource, projectDemo, dateCreated }: ProjectCard) {
     const { classes } = useStyles();
 
     const slides = allImages.map((image: any) => (
@@ -79,8 +80,12 @@ export default function AdminProjectsCard({ allImages, projectTitle, projectDesc
             </Text>
 
             <Group position="apart" mt="md" style={{ position: "absolute", right: "10px", bottom: "10px" }}>
-                <Button color='teal' radius="md">Edit</Button>
-                <Button color='red' radius="md">Delete</Button>
+                <Button onClick={() => {
+                    console.log(data)
+                }} color='teal' radius="md">Edit</Button>
+                <Button onClick={() => {
+                    console.log(data)
+                }} color='red' radius="md">Delete</Button>
             </Group>
         </Card>
     );
