@@ -1,5 +1,6 @@
 import { createStyles, Image, Card, Text, Group, Button, getStylesRef, rem } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
+import { supabase } from '@/utils';
 
 const useStyles = createStyles(() => ({
     carousel: {
@@ -83,8 +84,15 @@ export default function AdminProjectsCard({ data, allImages, projectTitle, proje
                 <Button onClick={() => {
                     console.log(data)
                 }} color='teal' radius="md">Edit</Button>
-                <Button onClick={() => {
-                    console.log(data)
+                <Button onClick={async () => {
+                    const { error } = await supabase
+                        .from('projects')
+                        .delete()
+                        .eq('id', data.id)
+
+                    console.log(error)
+
+                    window.location.reload()
                 }} color='red' radius="md">Delete</Button>
             </Group>
         </Card>
