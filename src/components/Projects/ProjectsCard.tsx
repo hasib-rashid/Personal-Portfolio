@@ -33,10 +33,11 @@ interface ProjectCard {
     projectDescription: any
     projectSource: any,
     projectDemo: any,
-    dateCreated: any
+    dateCreated: any,
+    data: any
 }
 
-export default function ProjectsCard({ allImages, projectTitle, projectDescription, projectSource, projectDemo, dateCreated }: ProjectCard) {
+export default function ProjectsCard({ data, allImages, projectTitle, projectDescription, projectSource, projectDemo, dateCreated }: ProjectCard) {
     const { classes } = useStyles();
 
     const slides = allImages.map((image: any) => (
@@ -79,8 +80,12 @@ export default function ProjectsCard({ allImages, projectTitle, projectDescripti
             </Text>
 
             <Group position="apart" mt="md" style={{ position: "absolute", right: "10px", bottom: "10px" }}>
-                <Button radius="md">Demo</Button>
-                <Button radius="md">Source Code</Button>
+                <Button onClick={() => {
+                    window.location.href = projectDemo
+                }} radius="md">Demo</Button>
+                <Button onClick={() => {
+                    window.location.href = projectSource
+                }} radius="md">Source Code</Button>
             </Group>
         </Card>
     );

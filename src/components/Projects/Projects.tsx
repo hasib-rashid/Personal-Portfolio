@@ -31,7 +31,7 @@ const Projects = () => {
                             <Grid grow>
                                 {result.map((s: any) => (
                                     <Grid.Col span={4}>
-                                        <ProjectsCard allImages={s.allImages.images} projectDemo={"https://google.com/"} dateCreated={s.dateCreated} projectDescription={s.projectDescription} projectSource={"https://github.com"} projectTitle={s.projectTitle} />
+                                        <ProjectsCard data={s} allImages={s.allImages.images} projectDemo={"https://google.com/"} dateCreated={s.dateCreated} projectDescription={s.projectDescription} projectSource={"https://github.com"} projectTitle={s.projectTitle} />
                                     </Grid.Col>
                                 ))}
                             </Grid>
