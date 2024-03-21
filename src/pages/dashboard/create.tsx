@@ -106,7 +106,6 @@ const create = () => {
                         }
 
                         handleSubmit()
-                        console.log(JSON.parse(images))
                         alert("Success")
                         window.location.href = "/projects"
                     }
