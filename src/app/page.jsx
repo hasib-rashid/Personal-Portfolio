@@ -18,6 +18,10 @@ export default function Home() {
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
       <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
         <title>Hasib Al Rashid</title>
+        <link rel="icon" type="image/x-icon" href="https://i.ibb.co/64fzyj7/Untitled-design-1-removebg-preview.png"></link>
+        <meta property="og:image" content="https://ibb.co/37VB41p" />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:image" content="https://ibb.co/37VB41p" />
         <meta name="description" content="Portfolio Website of Hasib Al Rashid" />
         <meta name="keywords" content="Portfolio, Projects, Overview" />
         <meta name="author" content="Hasib Al Rashid" />
