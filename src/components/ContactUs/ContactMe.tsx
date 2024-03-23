@@ -1,5 +1,7 @@
 import { TextInput, Textarea, SimpleGrid, Group, Title, Button } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 export default function ContactMe() {
     const form = useForm({
@@ -16,8 +18,25 @@ export default function ContactMe() {
         },
     });
 
+    const formic: any = useRef();
+
+    const sendEmail = (e: any) => {
+        emailjs
+            .sendForm('service_ikdx85z', 'template_c6qaxfe', formic.current, {
+                publicKey: 'YQKc5IhroK7mabwwM',
+            })
+            .then(
+                (res) => {
+                    console.log(res);
+                },
+                (error) => {
+                    console.log('FAILED...', error);
+                },
+            );
+    };
+
     return (
-        <form style={{ margin: "auto", padding: "70px 0", width: "70vw" }} onSubmit={form.onSubmit(() => { })}>
+        <form ref={formic} style={{ margin: "auto", padding: "70px 0", width: "70vw" }} onSubmit={sendEmail}>
             <Title
                 order={2}
                 size="h1"

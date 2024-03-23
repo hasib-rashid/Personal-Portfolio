@@ -17,6 +17,10 @@ export default function Home() {
   return (
     <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
       <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
+        <title>Hasib Al Rashid</title>
+        <meta name="description" content="Portfolio Website of Hasib Al Rashid" />
+        <meta name="keywords" content="Portfolio, Projects, Overview" />
+        <meta name="author" content="Hasib Al Rashid" />
         <div id="home" style={{ overflow: "hidden" }}>
           <main style={{
             overflowX: "hidden"
