@@ -37,16 +37,19 @@ export default function Footer() {
                 <h1 style={{ fontFamily: "Lobster, cursive", fontWeight: 300, fontSize: "40px" }}>Hasib Al Rashid</h1>
                 <Group spacing={0} className={classes.links} position="right" noWrap>
                     <ActionIcon size="lg">
-                        <IconBrandTwitter color={"#00acee"} size="1.1rem" stroke={1.5} />
+                        <IconBrandTwitter onClick={() => {
+                            window.location.href = "https://twitter.com/hasibalrashid"
+                        }} color={"#00acee"} size="1.1rem" stroke={1.5} />
                     </ActionIcon>
                     <ActionIcon size="lg">
-                        <IconBrandFacebook color={"#3b5998"} size="1.1rem" stroke={1.5} />
+                        <IconBrandFacebook onClick={() => {
+                            window.location.href = "https://www.facebook.com/hasib.alrashid/"
+                        }} color={"#3b5998"} size="1.1rem" stroke={1.5} />
                     </ActionIcon>
                     <ActionIcon size="lg">
-                        <IconBrandDiscord color={"#7289da"} size="1.1rem" stroke={1.5} />
-                    </ActionIcon>
-                    <ActionIcon size="lg">
-                        <IconBrandGithubFilled color={"#171515"} size="1.1rem" stroke={1.5} />
+                        <IconBrandGithubFilled onClick={() => {
+                            window.location.href = "https://github.com/hasib-rashid"
+                        }} color={"#171515"} size="1.1rem" stroke={1.5} />
                     </ActionIcon>
                 </Group>
             </Container>
