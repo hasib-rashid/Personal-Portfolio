@@ -54,7 +54,7 @@ export default function Home() {
                                         <Grid grow>
                                             {projectArray.map((s: any) => (
                                                 <Grid.Col span={5}>
-                                                    <ProjectsCard allImages={s.allImages.images} projectDemo={"https://google.com/"} dateCreated={s.dateCreated} projectDescription={s.projectDescription} projectSource={"https://github.com"} projectTitle={s.projectTitle} />
+                                                    <ProjectsCard data={s} allImages={s.allImages.images} projectDemo={"https://google.com/"} dateCreated={s.dateCreated} projectDescription={s.projectDescription} projectSource={"https://github.com"} projectTitle={s.projectTitle} />
                                                 </Grid.Col>
                                             ))}
                                         </Grid>

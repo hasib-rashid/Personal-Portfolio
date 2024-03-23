@@ -80,7 +80,7 @@ export default function ProjectsCard({ data, allImages, projectTitle, projectDes
             </Text>
 
             <Group position="apart" mt="md" style={{ position: "absolute", right: "10px", bottom: "10px" }}>
-                <Button onClick={() => {
+                <Button onClick={(e) => {
                     window.location.href = projectDemo
                 }} radius="md">Demo</Button>
                 <Button onClick={() => {
