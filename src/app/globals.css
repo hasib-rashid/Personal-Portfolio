@@ -55,6 +55,8 @@ main {
   font-family: "Dancing Script", cursive;
   font-size: 36px;
   color: white;
+  pointer-events: none;
+  user-select: none;
 }
 
 .about {
