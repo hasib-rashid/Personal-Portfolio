@@ -1,33 +1,23 @@
-import { useToggle, upperFirst, useLocalStorage } from '@mantine/hooks';
+import { useLocalStorage } from '@mantine/hooks';
 import { useForm } from '@mantine/form';
 import {
     TextInput,
     PasswordInput,
-    Text,
     Paper,
     Group,
     PaperProps,
     Button,
-    Divider,
-    Checkbox,
-    Anchor,
     Stack,
     ColorSchemeProvider,
     MantineProvider,
     createStyles,
     rem,
     Title,
-    Notification,
-    Alert,
 } from '@mantine/core';
 import { supabase } from "@/utils"
-import { useState } from 'react';
-import { IconX } from '@tabler/icons-react';
-import { IconAlertCircle } from '@tabler/icons-react';
 
-export default function adminLogin(props: PaperProps) {
-    const [email, setEmail] = useState()
-    const [password, setPassword] = useState()
+export default function AdminLogin(props: PaperProps) {
+    // @ts-ignore
     const form = useForm({
         initialValues: {
             email: '',
@@ -41,21 +31,6 @@ export default function adminLogin(props: PaperProps) {
             password: (val) => (val.length <= 6 ? 'Password should include at least 6 characters' : null),
         },
     });
-
-    const handleEmailChange = (e: any) => {
-        setEmail(e.target.value);
-    };
-
-    const handlePasswordChange = (e: any) => {
-        setPassword(e.target.value);
-    };
-
-    const handleSubmit = (e: any) => {
-        e.preventDefault();
-        // Perform login logic with email and password
-        console.log('Email:', email);
-        console.log('Password:', password);
-    };
 
     const useStyles = createStyles((theme) => ({
         wrapper: {
@@ -81,12 +56,13 @@ export default function adminLogin(props: PaperProps) {
             fontFamily: `Greycliff CF, ${theme.fontFamily}`,
         },
     }));
-
+    // @ts-ignore
     const [colorScheme, toggleColorScheme] = useLocalStorage({
         key: 'mantine-color-scheme',
         defaultValue: 'light',
         getInitialValueInEffect: true,
     });
+    // @ts-ignore
     const { classes } = useStyles();
 
     const handleLogin = async () => {

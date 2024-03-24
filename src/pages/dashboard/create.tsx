@@ -4,7 +4,7 @@ import { TextInput, Button } from '@mantine/core'
 import { useState, useEffect } from 'react'
 import './style.css'
 
-const create = () => {
+export default function Create() {
     useEffect(() => {
         supabase.auth.getSession().then((res) => {
             if (!res.data.session) window.location.href = "/"
@@ -114,5 +114,3 @@ const create = () => {
         </div>
     )
 }
-
-export default create

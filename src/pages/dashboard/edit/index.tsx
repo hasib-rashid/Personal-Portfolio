@@ -50,8 +50,8 @@ export default function Home() {
                                     projectArray.reverse().length > 0 && (
                                         <Grid grow>
                                             {projectArray.map((s: any) => (
-                                                <Grid.Col span={5}>
-                                                    <AdminProjectsCard data={s} allImages={s.allImages.images} projectDemo={"https://google.com/"} dateCreated={s.dateCreated} projectDescription={s.projectDescription} projectSource={"https://github.com"} projectTitle={s.projectTitle} />
+                                                <Grid.Col span={5} key={s.id}>
+                                                    <AdminProjectsCard key={s.id} data={s} allImages={s.allImages.images} projectDemo={"https://google.com/"} dateCreated={s.dateCreated} projectDescription={s.projectDescription} projectSource={"https://github.com"} projectTitle={s.projectTitle} />
                                                 </Grid.Col>
                                             ))}
                                         </Grid>

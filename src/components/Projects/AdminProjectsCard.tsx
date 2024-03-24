@@ -45,7 +45,7 @@ export default function AdminProjectsCard({ data, allImages, projectTitle, proje
         <Carousel.Slide key={image}>
             <Image onClick={(e) => {
                 e.stopPropagation();
-            }} src={image} height={220} />
+            }} src={image} alt='Project Image' height={220} />
         </Carousel.Slide>
     ));
 

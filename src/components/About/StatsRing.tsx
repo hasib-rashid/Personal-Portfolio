@@ -34,16 +34,16 @@ export default function StatsRing() {
             "icon": "react"
         }
     ]
+    const [colorScheme] = useLocalStorage<any>({
+        key: 'mantine-color-scheme',
+        defaultValue: 'light',
+        getInitialValueInEffect: true,
+    });
     const stats = data.map((stat: any) => {
 
         // @ts-expect-error
         const Icon = icons[stat.icon];
 
-        const [colorScheme] = useLocalStorage<any>({
-            key: 'mantine-color-scheme',
-            defaultValue: 'light',
-            getInitialValueInEffect: true,
-        });
         return (
             <Paper withBorder radius="md" p="xs" key={stat.label} style={{ backgroundColor: `${colorScheme === "dark" ? "#1A1B1E" : "white"}` }}>
                 <Group>

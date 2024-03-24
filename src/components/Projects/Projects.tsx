@@ -30,8 +30,8 @@ const Projects = () => {
                         projectArray.length > 0 && (
                             <Grid grow>
                                 {result.map((s: any) => (
-                                    <Grid.Col span={4}>
-                                        <ProjectsCard data={s} allImages={s.allImages.images} projectDemo={"https://google.com/"} dateCreated={s.dateCreated} projectDescription={s.projectDescription} projectSource={"https://github.com"} projectTitle={s.projectTitle} />
+                                    <Grid.Col span={4} key={s.id}>
+                                        <ProjectsCard key={s.id} data={s} allImages={s.allImages.images} projectDemo={"https://google.com/"} dateCreated={s.dateCreated} projectDescription={s.projectDescription} projectSource={"https://github.com"} projectTitle={s.projectTitle} />
                                     </Grid.Col>
                                 ))}
                             </Grid>
