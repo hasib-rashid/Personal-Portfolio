@@ -11,7 +11,7 @@ import Footer from '@/components/Footer/Footer'
 export default function Home() {
   const [colorScheme, toggleColorScheme] = useLocalStorage({
     key: 'mantine-color-scheme',
-    defaultValue: 'light',
+    defaultValue: 'dark',
     getInitialValueInEffect: true,
   });
   return (
