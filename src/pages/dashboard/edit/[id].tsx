@@ -9,14 +9,6 @@ const EditID = () => {
     const router = useRouter()
     const pathname = usePathname()
 
-    console.log(pathname)
-    useEffect(() => {
-        supabase.auth.getSession().then((res) => {
-            if (!res.data.session) router.push("/")
-        })
-    }, [])
-
-
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [dateCreated, setDateCreated] = useState('');
@@ -25,8 +17,8 @@ const EditID = () => {
     const [images, setImages] = useState('');
     const [session, setSession] = useState<any>(null)
 
+    console.log(pathname)
     useEffect(() => {
-
         setSession(supabase.auth.getSession())
 
         supabase.auth.onAuthStateChange((_event, session) => {

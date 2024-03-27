@@ -9,9 +9,14 @@ import { useRouter } from 'next/navigation'
 export default function Create() {
     const router = useRouter()
     const [session, setSession] = useState<any>(null)
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [dateCreated, setDateCreated] = useState('');
+    const [source, setSource] = useState('');
+    const [demo, setDemo] = useState('');
+    const [images, setImages] = useState('');
 
     useEffect(() => {
-
         setSession(supabase.auth.getSession())
 
         supabase.auth.onAuthStateChange((_event, session) => {
@@ -24,13 +29,6 @@ export default function Create() {
             <h1>404 Not Found</h1>
         )
     }
-
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [dateCreated, setDateCreated] = useState('');
-    const [source, setSource] = useState('');
-    const [demo, setDemo] = useState('');
-    const [images, setImages] = useState('');
 
     return (
         <div>

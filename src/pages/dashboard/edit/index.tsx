@@ -19,21 +19,12 @@ export default function Home() {
     const [session, setSession] = useState<any>(null)
 
     useEffect(() => {
-
         setSession(supabase.auth.getSession())
 
         supabase.auth.onAuthStateChange((_event, session) => {
             setSession(session)
         })
-    }, [])
 
-    if (!session) {
-        return (
-            <h1>404 Not Found</h1>
-        )
-    }
-
-    useEffect(() => {
         async function def() {
             const data = await supabase.from("projects").select("*")
 
@@ -43,6 +34,13 @@ export default function Home() {
         }
         def()
     }, [])
+
+    if (!session) {
+        return (
+            <h1>404 Not Found</h1>
+        )
+    }
+
     if (projectArray) {
 
         return (
