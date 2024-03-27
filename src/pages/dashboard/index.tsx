@@ -8,7 +8,7 @@ const Dashboard = () => {
     const router = useRouter()
     supabase.auth.getSession().then((res) => {
         if (!res.data.session) {
-            alert("You're not logged in")
+            console.log("You're not logged in")
         }
     })
 
