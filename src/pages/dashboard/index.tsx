@@ -7,7 +7,9 @@ import { useRouter } from 'next/navigation';
 const Dashboard = () => {
     const router = useRouter()
     supabase.auth.getSession().then((res) => {
-        if (!res.data.session) router.push("/")
+        if (!res.data.session) {
+            alert("You're not logged in")
+        }
     })
 
     return (
