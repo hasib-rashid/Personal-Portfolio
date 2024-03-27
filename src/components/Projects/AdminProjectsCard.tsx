@@ -1,6 +1,8 @@
 import { createStyles, Image, Card, Text, Group, Button, getStylesRef, rem } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
 import { supabase } from '@/utils';
+import { useRouter } from 'next/navigation'
+
 
 const useStyles = createStyles(() => ({
     carousel: {
@@ -40,6 +42,7 @@ interface ProjectCard {
 
 export default function AdminProjectsCard({ data, allImages, projectTitle, projectDescription, projectSource, projectDemo, dateCreated }: ProjectCard) {
     const { classes } = useStyles();
+    const router = useRouter()
 
     const slides = allImages.map((image: any) => (
         <Carousel.Slide key={image}>
@@ -82,7 +85,7 @@ export default function AdminProjectsCard({ data, allImages, projectTitle, proje
 
             <Group position="apart" mt="md" style={{ position: "absolute", right: "10px", bottom: "10px" }}>
                 <Button onClick={() => {
-                    console.log(data)
+                    router.push(`/dashboard/edit/${data.id}`)
                 }} color='teal' radius="md">Edit</Button>
                 <Button onClick={async () => {
                     const { error } = await supabase
@@ -92,7 +95,7 @@ export default function AdminProjectsCard({ data, allImages, projectTitle, proje
 
                     console.log(error)
 
-                    window.location.reload()
+                    router.refresh()
                 }} color='red' radius="md">Delete</Button>
             </Group>
         </Card>

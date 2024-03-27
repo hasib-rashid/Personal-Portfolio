@@ -4,8 +4,10 @@ import { useDisclosure, useLocalStorage } from '@mantine/hooks';
 import { IconSun, IconMoonStars } from '@tabler/icons-react';
 import useTarget from "use-target"
 import { supabase } from '@/utils';
+import { useRouter } from 'next/navigation';
 
 export default function AdminHeader() {
+    const router = useRouter()
     const links: any = [
         {
             "link": "/",
@@ -111,7 +113,7 @@ export default function AdminHeader() {
             onClickCapture={close}
             onClick={(event) => {
                 event.preventDefault();
-                window.location.href = `/dashboard/${link.link}`
+                router.push(`/dashboard/${link.link}`)
                 setActive(link.link);
                 return handleClick
             }}
@@ -144,7 +146,7 @@ export default function AdminHeader() {
                         <Button onClick={() => {
                             supabase.auth.signOut()
                             localStorage.removeItem("supabaseSession")
-                            window.location.href = '/'
+                            router.push("/")
                         }}>Sign Out</Button>
                     </div>
                     &nbsp;

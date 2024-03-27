@@ -3,11 +3,14 @@ import { supabase } from '@/utils'
 import { TextInput, Button } from '@mantine/core'
 import { useState, useEffect } from 'react'
 import './style.css'
+import { useRouter } from 'next/navigation'
+
 
 export default function Create() {
+    const router = useRouter()
     useEffect(() => {
         supabase.auth.getSession().then((res) => {
-            if (!res.data.session) window.location.href = "/"
+            if (!res.data.session) router.push("/")
         })
     }, [])
 
@@ -23,7 +26,7 @@ export default function Create() {
             <AdminHeader />
             <button onClick={() => {
                 supabase.auth.signOut()
-                window.location.href = '/'
+                router.push('/')
             }}>Sign Out</button>
 
             <div className='inputContainers'>
@@ -107,7 +110,7 @@ export default function Create() {
 
                         handleSubmit()
                         alert("Success")
-                        window.location.href = "/projects"
+                        router.push("/projects")
                     }
                 }}>Post Project</Button>
             </div>

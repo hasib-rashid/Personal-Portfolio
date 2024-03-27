@@ -15,8 +15,11 @@ import {
     Title,
 } from '@mantine/core';
 import { supabase } from "@/utils"
+import { useRouter } from 'next/navigation';
+
 
 export default function AdminLogin(props: PaperProps) {
+    const router = useRouter()
     // @ts-ignore
     const form = useForm({
         initialValues: {
@@ -77,7 +80,7 @@ export default function AdminLogin(props: PaperProps) {
         } else {
             console.log('User:', data);
             localStorage.setItem("supabaseSession", data.session.access_token)
-            window.location.href = "/dashboard"
+            router.push("/dashboard")
         }
     };
 

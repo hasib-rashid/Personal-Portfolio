@@ -1,8 +1,12 @@
+"use client"
+
 import { useState } from 'react';
 import { createStyles, Header, Group, ActionIcon, Container, Burger, rem, ColorSchemeProvider, MantineProvider, Drawer } from '@mantine/core';
 import { useDisclosure, useLocalStorage } from '@mantine/hooks';
 import { IconBrandTwitter, IconBrandDiscord, IconBrandFacebook, IconSun, IconMoonStars, IconBrandGithubFilled } from '@tabler/icons-react';
 import useTarget from "use-target"
+import { useRouter, usePathname } from 'next/navigation';
+
 
 export function HeaderMiddle() {
     const links: any = [
@@ -105,6 +109,11 @@ export function HeaderMiddle() {
         },
     }));
 
+    const router = useRouter()
+    const pathname = usePathname()
+
+    console.log(pathname)
+
     const { classes, cx } = useStyles();
     const toggleColorScheme = (value?: any) =>
         setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
@@ -116,9 +125,7 @@ export function HeaderMiddle() {
             className={cx(classes.link, { [classes.linkActive]: active === link.link })}
             onClickCapture={close}
             onClick={(event) => {
-                if (window.location.pathname != "/") {
-                    window.location.href = "/"
-
+                if (pathname != "/") {
                     event.preventDefault();
                     return handleClick
                 }
@@ -156,17 +163,17 @@ export function HeaderMiddle() {
                     <div className={classes.response}>
                         <ActionIcon size="lg">
                             <IconBrandTwitter onClick={() => {
-                                window.location.href = "https://twitter.com/hasibalrashid"
+                                router.push("https://twitter.com/hasibalrashid");
                             }} color={"#00acee"} size="1.1rem" stroke={1.5} />
                         </ActionIcon>
                         <ActionIcon size="lg">
                             <IconBrandFacebook onClick={() => {
-                                window.location.href = "https://www.facebook.com/hasib.alrashid/"
+                                router.push("https://www.facebook.com/hasib.alrashid/")
                             }} color={"#3b5998"} size="1.1rem" stroke={1.5} />
                         </ActionIcon>
                         <ActionIcon size="lg">
                             <IconBrandGithubFilled onClick={() => {
-                                window.location.href = "https://github.com/hasib-rashid"
+                                router.push("https://github.com/hasib-rashid")
                             }} color={"#171515"} size="1.1rem" stroke={1.5} />
                         </ActionIcon>
                     </div>

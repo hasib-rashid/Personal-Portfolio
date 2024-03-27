@@ -3,9 +3,11 @@ import ProjectsCard from './ProjectsCard'
 import { Container, Grid } from "@mantine/core"
 import { supabase } from '@/utils';
 import { Button } from '@mantine/core';
+import { useRouter } from 'next/navigation'
 
 const Projects = () => {
     const [projectArray, setProjectArray] = useState<any>()
+    const router = useRouter()
 
     useEffect(() => {
         async function def() {
@@ -42,7 +44,7 @@ const Projects = () => {
                 <Button
                     variant="filled"
                     onClick={() => {
-                        window.location.href = "/projects"
+                        router.push("/projects")
                     }}
                     style={{ marginTop: "25px", width: "70vw" }}
                 >

@@ -1,5 +1,7 @@
 import { createStyles, Image, Card, Text, Group, Button, getStylesRef, rem } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
+import { useRouter } from "next/navigation"
+
 
 const useStyles = createStyles(() => ({
     carousel: {
@@ -39,6 +41,7 @@ interface ProjectCard {
 
 export default function ProjectsCard({ data, allImages, projectTitle, projectDescription, projectSource, projectDemo, dateCreated }: ProjectCard) {
     const { classes } = useStyles();
+    const router = useRouter()
 
     const slides = allImages.map((image: any) => (
         <Carousel.Slide key={image}>
@@ -81,10 +84,10 @@ export default function ProjectsCard({ data, allImages, projectTitle, projectDes
 
             <Group position="apart" mt="md" style={{ position: "absolute", right: "10px", bottom: "10px" }}>
                 <Button onClick={(e) => {
-                    window.location.href = projectDemo
+                    router.push(projectDemo)
                 }} radius="md">Demo</Button>
                 <Button onClick={() => {
-                    window.location.href = projectSource
+                    router.push(projectSource)
                 }} radius="md">Source Code</Button>
             </Group>
         </Card>

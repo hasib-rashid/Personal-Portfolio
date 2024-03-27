@@ -1,10 +1,13 @@
 import { supabase } from '@/utils';
 import React from 'react'
 import AdminHeader from '@/components/Admin/Header';
+import { useRouter } from 'next/navigation';
 
-const dashboard = () => {
+
+const Dashboard = () => {
+    const router = useRouter()
     supabase.auth.getSession().then((res) => {
-        if (!res.data.session) window.location.href = "/"
+        if (!res.data.session) router.push("/")
     })
 
     return (
@@ -12,7 +15,7 @@ const dashboard = () => {
             <AdminHeader />
             <button onClick={() => {
                 supabase.auth.signOut()
-                window.location.href = '/'
+                router.push('/')
             }}>Sign Out</button>
 
             <h1>Dashboard</h1>
@@ -20,4 +23,4 @@ const dashboard = () => {
     )
 }
 
-export default dashboard
+export default Dashboard

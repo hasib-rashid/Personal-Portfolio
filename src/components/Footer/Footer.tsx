@@ -1,6 +1,7 @@
 import { createStyles, Container, Group, ActionIcon, rem } from '@mantine/core';
 import { IconBrandDiscord, IconBrandGithubFilled } from '@tabler/icons-react';
 import { IconBrandTwitter, IconBrandFacebook } from '@tabler/icons-react';
+import { useRouter } from 'next/navigation';
 
 const useStyles = createStyles((theme) => ({
     footer: {
@@ -30,6 +31,7 @@ const useStyles = createStyles((theme) => ({
 
 export default function Footer() {
     const { classes } = useStyles();
+    const router = useRouter()
 
     return (
         <div className={classes.footer}>
@@ -38,17 +40,17 @@ export default function Footer() {
                 <Group spacing={0} className={classes.links} position="right" noWrap>
                     <ActionIcon size="lg">
                         <IconBrandTwitter onClick={() => {
-                            window.location.href = "https://twitter.com/hasibalrashid"
+                            router.push("https://twitter.com/hasibalrashid")
                         }} color={"#00acee"} size="1.1rem" stroke={1.5} />
                     </ActionIcon>
                     <ActionIcon size="lg">
                         <IconBrandFacebook onClick={() => {
-                            window.location.href = "https://www.facebook.com/hasib.alrashid/"
+                            router.push("https://www.facebook.com/hasib.alrashid/")
                         }} color={"#3b5998"} size="1.1rem" stroke={1.5} />
                     </ActionIcon>
                     <ActionIcon size="lg">
                         <IconBrandGithubFilled onClick={() => {
-                            window.location.href = "https://github.com/hasib-rashid"
+                            router.push("https://github.com/hasib-rashid")
                         }} color={"#171515"} size="1.1rem" stroke={1.5} />
                     </ActionIcon>
                 </Group>

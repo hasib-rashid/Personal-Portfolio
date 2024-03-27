@@ -3,13 +3,16 @@ import { supabase } from '@/utils'
 import { TextInput, Button } from '@mantine/core'
 import { useState, useEffect } from 'react'
 import '../style.css'
-import { useRouter } from 'next/router'
+import { useRouter, usePathname } from 'next/navigation'
 
 const EditID = () => {
     const router = useRouter()
+    const pathname = usePathname()
+
+    console.log(pathname)
     useEffect(() => {
         supabase.auth.getSession().then((res) => {
-            if (!res.data.session) window.location.href = "/"
+            if (!res.data.session) router.push("/")
         })
     }, [])
 
@@ -26,7 +29,7 @@ const EditID = () => {
             <AdminHeader />
             <button onClick={() => {
                 supabase.auth.signOut()
-                window.location.href = '/'
+                router.push('/')
             }}>Sign Out</button>
 
             <div className='inputContainers'>
@@ -104,14 +107,15 @@ const EditID = () => {
                                 .update([
                                     { dateCreated: dateCreated, projectTitle: title, projectDescription: description, projectSource: source, projectDemo: demo, allImages: img }
                                 ])
-                                .eq('id', router.query.id)
+                                // @ts-ignore
+                                .eq('id', "1")
                                 .select()
                             console.log(data)
                         }
 
                         handleSubmit()
                         alert("Success")
-                        window.location.href = "/projects"
+                        router.push("/projects")
                     }
                 }}>Update Project</Button>
             </div>
