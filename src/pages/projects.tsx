@@ -62,7 +62,7 @@ export default function Home() {
                                         <Grid grow>
                                             {projectArray.map((s: any) => (
                                                 <Grid.Col span={5} key={s.id}>
-                                                    <ProjectsCard data={s} key={s.id} allImages={s.allImages.images} projectDemo={"https://google.com/"} dateCreated={s.dateCreated} projectDescription={s.projectDescription} projectSource={"https://github.com"} projectTitle={s.projectTitle} />
+                                                    <ProjectsCard data={s} key={s.id} allImages={s.allImages.images} projectDemo={s.projectDemo} dateCreated={s.dateCreated} projectDescription={s.projectDescription} projectSource={s.projectSource} projectTitle={s.projectTitle} />
                                                 </Grid.Col>
                                             ))}
                                         </Grid>
