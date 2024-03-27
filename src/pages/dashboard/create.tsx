@@ -8,11 +8,22 @@ import { useRouter } from 'next/navigation'
 
 export default function Create() {
     const router = useRouter()
+    const [session, setSession] = useState<any>(null)
+
     useEffect(() => {
-        supabase.auth.getSession().then((res) => {
-            if (!res.data.session) router.push("/")
+
+        setSession(supabase.auth.getSession())
+
+        supabase.auth.onAuthStateChange((_event, session) => {
+            setSession(session)
         })
     }, [])
+
+    if (!session) {
+        return (
+            <h1>404 Not Found</h1>
+        )
+    }
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');

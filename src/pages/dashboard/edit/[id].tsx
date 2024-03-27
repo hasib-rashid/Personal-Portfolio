@@ -23,6 +23,22 @@ const EditID = () => {
     const [source, setSource] = useState('');
     const [demo, setDemo] = useState('');
     const [images, setImages] = useState('');
+    const [session, setSession] = useState<any>(null)
+
+    useEffect(() => {
+
+        setSession(supabase.auth.getSession())
+
+        supabase.auth.onAuthStateChange((_event, session) => {
+            setSession(session)
+        })
+    }, [])
+
+    if (!session) {
+        return (
+            <h1>404 Not Found</h1>
+        )
+    }
 
     return (
         <div>

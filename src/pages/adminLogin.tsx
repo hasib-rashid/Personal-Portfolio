@@ -69,7 +69,6 @@ export default function AdminLogin(props: PaperProps) {
     const { classes } = useStyles();
 
     const handleLogin = async () => {
-        console.log(form.values)
         const { data, error } = await supabase.auth.signInWithPassword({
             email: form.values.email,
             password: form.values.password,
@@ -78,7 +77,6 @@ export default function AdminLogin(props: PaperProps) {
             console.error('Error signing in:', error.message);
             alert("Password is incorrect")
         } else {
-            console.log('User:', data);
             localStorage.setItem("supabaseSession", data.session.access_token)
             router.push("/dashboard")
         }
