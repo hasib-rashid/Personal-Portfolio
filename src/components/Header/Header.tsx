@@ -33,7 +33,7 @@ export function HeaderMiddle() {
 
     const [colorScheme, setColorScheme] = useLocalStorage<any>({
         key: 'mantine-color-scheme',
-        defaultValue: 'light',
+        defaultValue: 'dark',
         getInitialValueInEffect: true,
     });
     const useStyles = createStyles((theme) => ({

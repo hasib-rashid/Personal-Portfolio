@@ -12,7 +12,7 @@ import AdminHeader from '@/components/Admin/Header'
 export default function Home() {
     const [colorScheme, toggleColorScheme] = useLocalStorage<any>({
         key: 'mantine-color-scheme',
-        defaultValue: 'light',
+        defaultValue: 'dark',
         getInitialValueInEffect: true,
     });
     const [projectArray, setProjectArray] = useState<any>()

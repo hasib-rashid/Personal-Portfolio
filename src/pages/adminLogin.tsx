@@ -62,7 +62,7 @@ export default function AdminLogin(props: PaperProps) {
     // @ts-ignore
     const [colorScheme, toggleColorScheme] = useLocalStorage({
         key: 'mantine-color-scheme',
-        defaultValue: 'light',
+        defaultValue: 'dark',
         getInitialValueInEffect: true,
     });
     // @ts-ignore

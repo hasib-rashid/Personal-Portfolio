@@ -36,7 +36,7 @@ export default function StatsRing() {
     ]
     const [colorScheme] = useLocalStorage<any>({
         key: 'mantine-color-scheme',
-        defaultValue: 'light',
+        defaultValue: 'dark',
         getInitialValueInEffect: true,
     });
     const stats = data.map((stat: any) => {

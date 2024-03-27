@@ -15,7 +15,7 @@ import ProjectsCard from '@/components/Projects/ProjectsCard'
 export default function Home() {
     const [colorScheme, toggleColorScheme] = useLocalStorage<any>({
         key: 'mantine-color-scheme',
-        defaultValue: 'light',
+        defaultValue: 'dark',
         getInitialValueInEffect: true,
     });
     const [projectArray, setProjectArray] = useState<any>()
